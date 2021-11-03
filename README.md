@@ -1,1 +1,0 @@
-# selloffy-app
