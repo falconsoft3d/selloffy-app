@@ -11,3 +11,9 @@ An app to sell offline with odoo or any ERP
 - Proceso de bajada de productos y lista de precios de clientes.
 - Proceso de creación de ordenes de ventas
 - Proceso de subida de sale order ( manual masiva o con job que puedo activar en la app )
+
+
+# Start Dev
+```
+yarn start
+```
