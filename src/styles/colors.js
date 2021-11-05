@@ -4,6 +4,7 @@ const colors = {
     
     // Fonts
     fontLight: "#fff",
+    fontgray: "#848484",
     
     // Background,
     bgLight: "#fff",
