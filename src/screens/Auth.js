@@ -16,7 +16,7 @@ const Auth = () => {
             </KeyboardAvoidingView>
 
             <View style={{marginTop:20}}>
-                <Text style={styles.textcenter}>sell offline with your ERP</Text>
+                <Text style={styles.textcenter}>Sell offline with your ERP</Text>
                 <Text style={styles.textcenter}>By Marlon Falcon / V 0.0.1</Text>
             </View>
         </View>
