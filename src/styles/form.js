@@ -10,7 +10,13 @@ const formStyles = StyleSheet.create({
     padding: 5,
     backgroundColor: colors.primary,
   },
-  
+
+
+  btnSuccesGreen: {
+    padding: 5,
+    backgroundColor: colors.green,
+  },
+
   btnText: {
     marginTop: 10,
   },

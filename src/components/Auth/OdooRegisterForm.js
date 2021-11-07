@@ -5,7 +5,8 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { formStyle } from "../../styles";
 
-const RegisterForm = () => {
+const OdooRegisterForm = (props) => {
+    const { setapiRegister } = props
     const formik = useFormik({
         initialValues: initialValues(),
         validationSchema: Yup.object(validationSchema()),
@@ -58,12 +59,17 @@ const RegisterForm = () => {
                 mode="contained"
                 style={formStyle.btnSucces}
                 onPress={formik.handleSubmit}
-            >Register</Button>
+            >Odoo Register</Button>
+
+         <Button
+                style={formStyle.btnText}
+                onPress={()=>setapiRegister(true)}
+            >Change to Api Register</Button>
         </View>
     )
 }
 
-export default RegisterForm;
+export default OdooRegisterForm;
 
 function initialValues() {
     return {

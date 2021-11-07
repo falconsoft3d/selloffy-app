@@ -1,18 +1,21 @@
 import { Platform } from 'expo-modules-core';
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, View, Text, Image, KeyboardAvoidingView } from 'react-native';
 import logo from "../../assets/selloffy.png"
-import RegisterForm from "../components/Auth/RegisterForm";
+import OdooRegisterForm from "../components/Auth/OdooRegisterForm";
+import ApiRegisterForm from "../components/Auth/ApiRegisterForm";
 import { layoutStyle } from '../styles';
 import colors from '../styles/colors'
 
 const Auth = () => {
+    const [apiRegister, setapiRegister] = useState(false)
     return (
         <View style={layoutStyle.container}>
             <Image style={styles.logo}  source={logo}/>
             
             <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? "padding" : "height"}>
-                <RegisterForm/>
+                {!apiRegister ? <OdooRegisterForm setapiRegister={setapiRegister}/> 
+                            : <ApiRegisterForm setapiRegister={setapiRegister}/>}  
             </KeyboardAvoidingView>
 
             <View style={{marginTop:20}}>
