@@ -1,19 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, Text } from 'react-native'
 import { TextInput, Button } from "react-native-paper";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { formStyle } from "../../styles";
+import Toast from "react-native-root-toast";
+import { registerApi } from "../../api/auth";
 
 const OdooRegisterForm = (props) => {
     const { setapiRegister } = props
+    const [loading, setLoading] = useState(false)
+
     const formik = useFormik({
         initialValues: initialValues(),
         validationSchema: Yup.object(validationSchema()),
-        onSubmit: (formData) => {
-            console.log("Regitro de usuario");
-            console.log(formData);
-        }
+        onSubmit: async (formData) => {
+            setLoading(true)
+            try {
+                formData.provider = 'odoo';
+                const response = await registerApi(formData);
+                if (!response.result === false ) {
+                    console.log("== Login ==")
+                    console.log("User ID: " + response.result)
+                } else {
+                    throw new Error("Password or user incorect");
+                }
+                console.log(response)
+            } catch (error) {
+                setLoading(false)
+                Toast.show("Password,url or user incorect", {
+                    position: Toast.positions.CENTER,
+                  });
+            }
+            setLoading(false)
+        }   
     })
 
     return (
@@ -59,6 +79,7 @@ const OdooRegisterForm = (props) => {
                 mode="contained"
                 style={formStyle.btnSucces}
                 onPress={formik.handleSubmit}
+                loading={loading}
             >Odoo Register</Button>
 
          <Button
