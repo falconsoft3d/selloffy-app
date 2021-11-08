@@ -6,6 +6,7 @@ import AuthContext from './src/context/AuthContext';
 import colors from './src/styles/colors';
 import { setTokenApi, getTokenApi, removeTokenApi, createToken } from "./src/api/token";
 import TempComponent from "./src/components/TempComponent";
+import AppNavigation from './src/navigation/AppNavigation';
 
 export default function App() {
   const [auth, setAuth] = useState(undefined);
@@ -64,7 +65,7 @@ export default function App() {
   return (
     <AuthContext.Provider value={authData}>
       <PaperProvider theme={theme}>
-        {  auth ? <TempComponent auth={auth} /> : <Auth/>}
+        {  auth ? <AppNavigation/> : <Auth/>}
       </PaperProvider>
     </AuthContext.Provider>
   );

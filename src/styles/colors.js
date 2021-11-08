@@ -10,6 +10,7 @@ const colors = {
     // Background,
     bgLight: "#fff",
     bgDark: "#16222b",
+    bgPink: "#724466"
   };
   
   export default colors;
