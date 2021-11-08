@@ -20,7 +20,7 @@ export async function registerApi(formData) {
         return result;
       }
     } catch (error) {
-      console.log(error);
+      console.log("Error:", error);
       return null;
     }
   }

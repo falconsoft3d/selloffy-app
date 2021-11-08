@@ -6,22 +6,32 @@ import * as Yup from "yup";
 import { formStyle } from "../../styles";
 import Toast from "react-native-root-toast";
 import { registerApi } from "../../api/auth";
+import useAuth from "../../hooks/useAuth";
+
 
 const OdooRegisterForm = (props) => {
     const { setapiRegister } = props
     const [loading, setLoading] = useState(false)
-
+    const { login } = useAuth();
+    
     const formik = useFormik({
         initialValues: initialValues(),
         validationSchema: Yup.object(validationSchema()),
         onSubmit: async (formData) => {
             setLoading(true)
             try {
-                formData.provider = 'odoo';
+                formData.provider = "odoo"
                 const response = await registerApi(formData);
                 if (!response.result === false ) {
-                    console.log("== Login ==")
-                    console.log("User ID: " + response.result)
+                    const dataObject = {
+                        id : response.result.toString(),
+                        username: formData.username,
+                        password: formData.password,
+                        url: formData.url,
+                        database : formData.database,
+                        provider : "odoo"
+                    }
+                    login(dataObject)
                 } else {
                     throw new Error("Password or user incorect");
                 }
