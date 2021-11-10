@@ -45,6 +45,7 @@ export default function App() {
 
   const logout = () => {
     if (auth) {
+      console.log("App:Logout")
       removeTokenApi();
       setAuth(null);
     }

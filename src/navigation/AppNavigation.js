@@ -5,6 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import Home from "../screens/Home";
 import Favorites from "../screens/Favorites";
 import Cart from "../screens/Cart";
+import SaleOrder from "../screens/SaleOrder";
 import AccountStack from './AccountStack';
 import AwesomeIcon from "react-native-vector-icons/FontAwesome";
 import colors from "../styles/colors";
@@ -43,10 +44,17 @@ const AppNavigation = () => {
                     }}
                 />
                 <Tab.Screen 
+                    name="so"
+                    component={SaleOrder}
+                    options={{
+                        title: "SO",
+                    }}
+                />
+                <Tab.Screen 
                     name="account"
                     component={AccountStack}
                     options={{
-                        title: "Account",
+                        title: "Config",
                     }}
                 />
             </Tab.Navigator>
@@ -80,6 +88,10 @@ function setIcon(route, routeStatus) {
 
         case "cart":
             iconName = "shopping-cart";
+            break;
+        
+        case "so":
+            iconName = "book";
             break;
 
         case "account":

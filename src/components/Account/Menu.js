@@ -26,16 +26,30 @@ const Menu = () => {
         )
     }
 
+    const SyncUp = () => {
+        console.log("SyncUp")
+    }
+
     return (
         <>
         <List.Section>
                 <List.Item  
+                    title="Sync Up"
+                    description="Uptade your data"
+                    left={(props) => <List.Icon { ...props } 
+                    icon="update" />}
+                    onPress={()=>SyncUp()}                    
+                />
+
+
+                <List.Item
                     title="Sign Out"
-                    description="Close"
+                    description="Close your session"
                     left={(props) => <List.Icon { ...props } 
                     icon="logout" />}
                     onPress={logoutAccount}
                 />
+                
         </List.Section>
         </>
     )
