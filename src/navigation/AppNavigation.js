@@ -2,7 +2,7 @@ import React from 'react';
 import { NavigationContainer } from "@react-navigation/native";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { StyleSheet, Text, View } from 'react-native';
-import Home from "../screens/Home";
+import ProductStack from "./ProductStack";
 import Favorites from "../screens/Favorites";
 import Cart from "../screens/Cart";
 import SaleOrder from "../screens/SaleOrder";
@@ -24,7 +24,7 @@ const AppNavigation = () => {
                 })}>
                 <Tab.Screen 
                     name="home"
-                    component={Home}
+                    component={ProductStack}
                     options={{
                         title: "Home",
                     }}

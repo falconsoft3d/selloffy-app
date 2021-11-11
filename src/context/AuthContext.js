@@ -5,6 +5,7 @@ const AuthContext = createContext({
   login: () => null,
   logout: () => null,
   setReloadUser: () => null,
+  syncUpdate: () => null,
 });
 
 export default AuthContext;

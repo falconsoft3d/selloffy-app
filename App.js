@@ -5,6 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import AuthContext from './src/context/AuthContext';
 import colors from './src/styles/colors';
 import { setTokenApi, getTokenApi, removeTokenApi, createToken } from "./src/api/token";
+import { updateData } from "./src/api/data"
 import TempComponent from "./src/components/TempComponent";
 import AppNavigation from './src/navigation/AppNavigation';
 
@@ -51,12 +52,17 @@ export default function App() {
     }
   };
 
+  const syncUpdate = async () => {
+    await updateData(auth.token);
+  }
+
 
   const authData = useMemo(
     () => ({
         auth,
         login,
         logout,
+        syncUpdate,
     }),
     [auth]
   );

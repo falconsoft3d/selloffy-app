@@ -6,7 +6,7 @@ import useAuth from "../../hooks/useAuth";
 
 const Menu = () => {
     const navigation = useNavigation();
-    const { logout } = useAuth();
+    const { logout, syncUpdate } = useAuth();
 
     const logoutAccount = () => {
         Alert.alert(
@@ -18,7 +18,7 @@ const Menu = () => {
                 },
                 {
                     text: "Yes",
-                    onPress: () => logout
+                    onPress: () => logout()
                 }
             ], {
                 cancelable: false
@@ -27,7 +27,22 @@ const Menu = () => {
     }
 
     const SyncUp = () => {
-        console.log("SyncUp")
+        Alert.alert(
+            "Sync Up",
+            "Are you sure you want to Sync Up?",
+            [
+                {
+                    text: "No"
+                },
+                {
+                    text: "Yes",
+                    onPress: () => syncUpdate()
+                }
+            ], {
+                cancelable: false
+            }
+        )
+        
     }
 
     return (

@@ -7,7 +7,7 @@ const Search = () => {
     return (
         <View style={styles.container}>
                 <Searchbar 
-                    placeholder="Busca tu producto"
+                    placeholder="Find Product"
                 />
         </View>
     )
