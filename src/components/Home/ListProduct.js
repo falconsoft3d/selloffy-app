@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { StyleSheet, Text, View, Image, TouchableWithoutFeedback } from 'react-native'
 import { map } from "lodash"
 import defaultproduct from "../../../assets/default-product.png";
-import { useNavigation } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 
 const ListProduct = (props) => {
     const { products } = props;
@@ -33,7 +33,7 @@ const ListProduct = (props) => {
                                 {product.name}
                             </Text>
                             <Text style={styles.name} numberOfLines={1} ellipsizeMode="tail">
-                                Price: {product.lst_price}
+                                Price: {product.lst_price.toFixed(2)}
                             </Text>
                         </View>
                     </View>

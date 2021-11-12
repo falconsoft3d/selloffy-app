@@ -1,17 +1,27 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { getLastProductApi } from "../../api/product";
 import ListProduct from "./ListProduct";
+import { useFocusEffect, useNavigation } from "@react-navigation/native"
 
 const NewProducts = () => {
     const [products, setProducts] = useState(null)
 
-    useEffect(() => {
-        (async () => {
+    // useEffect(() => {
+    //     (async () => {
+    //         const response = await getLastProductApi()
+    //        setProducts(response) 
+    //     })()
+    // }, [])
+
+    useFocusEffect(
+        useCallback(() => {
+          (async () => {
             const response = await getLastProductApi()
             setProducts(response)
-        })()
-    }, [])
+          })();
+        }, [])
+      );
 
     return (
         <View style={styles.container}>
