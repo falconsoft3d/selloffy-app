@@ -24,7 +24,7 @@ const ListProduct = (props) => {
                         <View style={ styles.product}>
                             <Image
                                 style={styles.image}  
-                                source={defaultproduct}
+                                source={!product.image_128 ? defaultproduct : product.image_128 }
                             />
                             <Text style={styles.name} numberOfLines={1} ellipsizeMode="tail">
                                 Code: {product.code}
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     },
     containerProduct: {
       width: "50%",
-      padding: 3,
+      padding: 1,
     },
     product: {
       backgroundColor: "#f0f0f0",
@@ -66,7 +66,6 @@ const styles = StyleSheet.create({
     },
     image: {
       resizeMode: "contain",
-      marginBottom: 10,
       width: "100%",
     },
     name: {

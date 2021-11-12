@@ -25,7 +25,9 @@ async function downloadProductApi(formData) {
             "params": {"service": "object", "method": "execute", 
             "args": [formData.database , formData.id, formData.password, 
                     "product.product", "search_read", [], 
-                    ["name","id","code","barcode","lst_price","standard_price","type","qty_available"]]}
+                    ["name","id","code","barcode",
+                    "lst_price","standard_price",
+                    "type","qty_available","image_128"]]}
         }
 
         // "image_256"
