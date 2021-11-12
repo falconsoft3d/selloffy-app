@@ -39,8 +39,9 @@ async function downloadProductApi(formData) {
         };
         const response = await fetch(url, params);
         const result = await response.json();
-        // console.log(result);
-        await AsyncStorage.setItem("PRODUCT", JSON.stringify(result));
+        // console.log("============= ::: ===== ")
+        // console.log(result.result);
+        await AsyncStorage.setItem("PRODUCT", JSON.stringify(result.result));
 
         return result;
       }

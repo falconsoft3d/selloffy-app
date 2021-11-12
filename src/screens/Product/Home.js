@@ -3,13 +3,17 @@ import { StyleSheet, Text, View } from 'react-native'
 import StatusBar from '../../components/StatusBar'
 import colors from '../../styles/colors';
 import Search from "../../components/Search";
+import NewProducts from '../../components/Home/NewProducts';
+import { ScrollView } from 'react-native';
 
 const Home = () => {
     return (
         <>
             <StatusBar  backgroundColor={colors.bgPink} barStyle="light-content" />
             <Search/>
-            <Text>Home</Text>
+            <ScrollView>
+                <NewProducts />
+            </ScrollView>
         </>
     )
 }
