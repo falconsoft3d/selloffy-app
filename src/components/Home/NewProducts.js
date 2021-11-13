@@ -7,13 +7,6 @@ import { useFocusEffect, useNavigation } from "@react-navigation/native"
 const NewProducts = () => {
     const [products, setProducts] = useState(null)
 
-    // useEffect(() => {
-    //     (async () => {
-    //         const response = await getLastProductApi()
-    //        setProducts(response) 
-    //     })()
-    // }, [])
-
     useFocusEffect(
         useCallback(() => {
           (async () => {

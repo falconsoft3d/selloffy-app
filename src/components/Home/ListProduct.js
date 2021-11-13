@@ -8,8 +8,8 @@ const ListProduct = (props) => {
     const { products } = props;
     const navigation = useNavigation();
 
-    const goToProduct = (id) => {
-        navigation.push("product", { idProduct: id });
+    const goToProduct = (product) => {
+        navigation.push("product", { product });
     };
     
 
@@ -18,22 +18,35 @@ const ListProduct = (props) => {
         <View style={styles.container}>
             { products && map(products, (product) => (
                 <TouchableWithoutFeedback key={product.id}
-                    onPress={() => goToProduct(product.id)}
+                    onPress={() => goToProduct(product)}
                 >
                     <View style={ styles.containerProduct}>
                         <View style={ styles.product}>
-                            <Image
-                                style={styles.image}  
-                                source={!product.image_128 ? defaultproduct : product.image_128 }
-                            />
-                            <Text style={styles.name} numberOfLines={1} ellipsizeMode="tail">
-                                Code: {product.code}
-                            </Text>
+                                {  product.image_128  ?  (
+                                    <View style={styles.thumbContainer}>
+                                    <Image style={styles.image}
+                                            source={{uri: `data:image/png;base64,${product.image_128}`}}/>
+                                    </View>
+                                ) : (
+                                    <View style={styles.thumbContainer}>
+                                    <Image style={styles.image}
+                                            source={defaultproduct}/>
+                                    </View>
+                                )}
+
                             <Text style={styles.name} numberOfLines={1} ellipsizeMode="tail">
                                 {product.name}
                             </Text>
-                            <Text style={styles.name} numberOfLines={1} ellipsizeMode="tail">
+                            <Text style={styles.fields} numberOfLines={1} ellipsizeMode="tail">
+                                Code: { product.code ? product.code : "-"}
+                            </Text>
+                            
+                            <Text style={styles.fields} numberOfLines={1} ellipsizeMode="tail">
                                 Price: {product.lst_price.toFixed(2)}
+                            </Text>
+
+                            <Text style={styles.fields} numberOfLines={1} ellipsizeMode="tail">
+                                Stock: {product.qty_available} UN
                             </Text>
                         </View>
                     </View>
@@ -61,15 +74,23 @@ const styles = StyleSheet.create({
       padding: 1,
     },
     product: {
-      backgroundColor: "#f0f0f0",
+      backgroundColor: "#fff",
       padding: 10,
     },
     image: {
-      resizeMode: "contain",
+      height: 150,
       width: "100%",
+      marginBottom: 10
     },
+
     name: {
+        marginTop: 0,
+        fontSize: 13,
+        fontWeight: "bold",
+      },
+    
+    fields: {
       marginTop: 0,
-      fontSize: 15,
+      fontSize: 13,
     },
   });

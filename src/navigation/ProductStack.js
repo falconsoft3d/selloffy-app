@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import { createStackNavigator } from "@react-navigation/stack";
 import colors from '../styles/colors';
 import Home from "../screens/Product/Home";
+import Product from "../screens/Product/Product"
 
 const Stack = createStackNavigator();
 
@@ -18,6 +19,12 @@ const ProductStack = () => {
             <Stack.Screen
                 name="home"
                 component={Home}
+                options={{ headerShown: false }}
+            />
+
+            <Stack.Screen
+                name="product"
+                component={Product}
                 options={{ headerShown: false }}
             />
         </Stack.Navigator>
