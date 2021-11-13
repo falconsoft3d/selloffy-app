@@ -3,14 +3,14 @@ import { StyleSheet } from "react-native";
 import { Button } from "react-native-paper";
 import Toast from "react-native-root-toast";
 import colors from "../../styles/colors";
-// import { addProductCartApi } from "../../api/cart";
+import { addProductCartApi } from "../../api/cart";
 
 export default function Actions(props) {
   const { product, quantity } = props;
 
   const addProductCart = async () => {
-    // const response = await addProductCartApi(product._id, quantity);
-    const response = "ok"
+    const response = await addProductCartApi(product.id, quantity);
+    
     if (response) {
       Toast.show("Product added to cart", {
         position: Toast.positions.CENTER,

@@ -26,7 +26,7 @@ async function downloadProductApi(formData) {
             "args": [formData.database , formData.id, formData.password, 
                     "product.product", "search_read", [], 
                     ["name","id","code","barcode",
-                    "lst_price","standard_price",
+                    "lst_price","standard_price","currency_id",
                     "type","qty_available","image_128"]]}
         }
 
@@ -41,8 +41,10 @@ async function downloadProductApi(formData) {
         };
         const response = await fetch(url, params);
         const result = await response.json();
-        // console.log("============= ::: ===== ")
-        // console.log(result.result);
+        
+        console.log("============= ::: ===== ")
+        console.log(result.result);
+        
         await AsyncStorage.setItem("PRODUCT", JSON.stringify(result.result));
 
         return result;

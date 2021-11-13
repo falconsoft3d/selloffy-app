@@ -37,7 +37,7 @@ const [quantity, setQuantity] = useState(1);
                 <View style={styles.info}>
                     <View style={styles.div50}>
                         <Text style={styles.text}>Code: {product.code}</Text>
-                        <Price price={product.lst_price}/>
+                        <Price product={product} />
                         <Text style={styles.text}>Stock: {product.qty_available}</Text>
                         <Text style={styles.text}>Barcode: {product.barcode}</Text>
                     </View>
@@ -73,7 +73,8 @@ const styles = StyleSheet.create({
     image: {
         height: 350,
         width: "100%",
-        marginBottom: 10
+        marginBottom: 10,
+        borderRadius: 5
       },
     info : {
         flexDirection: "row",

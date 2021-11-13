@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image, TouchableWithoutFeedback } from 'react-n
 import { map } from "lodash"
 import defaultproduct from "../../../assets/default-product.png";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import colors from "../../styles/colors";
 
 const ListProduct = (props) => {
     const { products } = props;
@@ -41,8 +42,8 @@ const ListProduct = (props) => {
                                 Code: { product.code ? product.code : "-"}
                             </Text>
                             
-                            <Text style={styles.fields} numberOfLines={1} ellipsizeMode="tail">
-                                Price: {product.lst_price.toFixed(2)}
+                            <Text style={styles.fieldPrice} numberOfLines={1} ellipsizeMode="tail">
+                                Price: {product.lst_price.toFixed(2).replace(".",",") } { product.currency_id[1] === 'EUR' && "€" }
                             </Text>
 
                             <Text style={styles.fields} numberOfLines={1} ellipsizeMode="tail">
@@ -80,7 +81,8 @@ const styles = StyleSheet.create({
     image: {
       height: 150,
       width: "100%",
-      marginBottom: 10
+      marginBottom: 10,
+      borderRadius: 5
     },
 
     name: {
@@ -93,4 +95,10 @@ const styles = StyleSheet.create({
       marginTop: 0,
       fontSize: 13,
     },
+
+    fieldPrice: {
+        marginTop: 0,
+        fontSize: 13,
+        color: colors.bgPink,
+      },
   });
